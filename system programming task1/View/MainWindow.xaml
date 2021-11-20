@@ -17,17 +17,18 @@
             <StackPanel Orientation="Horizontal"   Height=" 150"  >
                 
                 <Label FontSize=" 25" Foreground="White" >process name</Label>
-                <TextBox Height=" 40" VerticalAlignment="Top" FontSize=" 20" Width=" 200" Name="processname"></TextBox>
+                <TextBox Height=" 40" VerticalAlignment="Top"  FontSize=" 20" Width=" 200" Name="processname"></TextBox>
                 
             </StackPanel>
         </Grid>
         <Grid Grid.Row=" 1">
             
             <StackPanel >
-                <ListView x:Name="sProcess"  >
-                    
-                
-                </ListView>
+                <ListView x:Name="sProcess" SelectedItem="{Binding SProcess}" ItemsSource="{Binding Processes}" Height="140" Margin="0,0,-0.4,0">
+
+                   
+                    </ListView>
+
                     
 
                             

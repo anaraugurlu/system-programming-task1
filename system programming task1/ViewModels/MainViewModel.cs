@@ -15,7 +15,7 @@ namespace system_programming_task1.ViewModels
     {
    
         public MainWindow MainWindow { get; set; }
-        public ObservableCollection<Process> Processes { get; set; }
+        ObservableCollection<Process> Processes { get; set; }
         private Process sProcess;
 
         public Process SProcess
@@ -56,10 +56,9 @@ namespace system_programming_task1.ViewModels
             {
                 //try
                 //{
-                    
-                   // SProcess.Kill() ;
+             
+                SProcess.Kill();
 
-                SProcess.Dispose();
 
                 //}
                 //catch (Exception )
