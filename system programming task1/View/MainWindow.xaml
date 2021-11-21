@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:system_programming_task1" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Background="Purple" >
+        Title="MainWindow" Height="551.636" Width="838.839" Background="Purple" >
     <Grid>
         <Grid.RowDefinitions  >
             <RowDefinition Height =" *">
@@ -15,27 +15,75 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row=" 0">
             <StackPanel Orientation="Horizontal"   Height=" 150"  >
-                
+
                 <Label FontSize=" 25" Foreground="White" >process name</Label>
-                <TextBox Height=" 40" VerticalAlignment="Top"  FontSize=" 20" Width=" 200" Name="processname"></TextBox>
-                
+                <TextBox Height=" 35" VerticalAlignment="Top"  FontSize=" 20" Width=" 200" Name="processname"></TextBox>
+
             </StackPanel>
         </Grid>
         <Grid Grid.Row=" 1">
-            
+
             <StackPanel >
-                <ListView x:Name="sProcess" SelectedItem="{Binding SProcess}" ItemsSource="{Binding Processes}" Height="140" Margin="0,0,-0.4,0">
 
-                   
-                    </ListView>
 
-                    
 
-                            
-           
-                <Button Height=" 50" Width=" 150" HorizontalAlignment="Left" Background="MediumPurple" Foreground="White"  VerticalAlignment="Bottom"   Margin=" 20" FontSize=" 20" Command="{Binding CreateBtn}" Name="create" >Create Process</Button>
-                <Button Height=" 50" Width=" 150" Background="MediumPurple"  HorizontalAlignment="Left" Foreground="White"  VerticalAlignment="Bottom" Margin=" 20" FontSize=" 20"  Command="{Binding EndBtn}">End Process</Button>
-                
+
+                <StackPanel Orientation="Horizontal" Margin="0,0,-0.2,0" >
+                    <ListView  Name="addlistbox" Height="150" Width=" 250"> </ListView>
+                <ListView x:Name="sProcess" SelectedItem="{Binding SProcess}" ItemsSource="{Binding AllProcesses}" Height="150">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Id" Width="100">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock FontSize="22" Text="{Binding Id}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Name" Width="100">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock FontSize="22" Text="{Binding ProcessName}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Handle" Width="100">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock FontSize="22" Text="{Binding HandleCount}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+
+                            </GridViewColumn>
+                            <GridViewColumn Header="Thread" Width="100">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock FontSize="22" Text="{Binding Threads.Count}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+
+                            </GridViewColumn>
+                            <GridViewColumn Header="Machine" Width="100">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock FontSize="22" Text="{Binding MachineName}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+                </StackPanel>
+
+
+
+
+                <Button Height=" 50" Width=" 150" HorizontalAlignment="Left" Background="MediumPurple" Foreground="White"  VerticalAlignment="Bottom"   Margin=" 20" FontSize=" 20" Command="{Binding AddBtn}" x:Name="add" Content="add Process" Click="add_Click" />
+                <Button Height=" 50" Width=" 150" HorizontalAlignment="Left" Background="MediumPurple" Foreground="White"  VerticalAlignment="Bottom"   Margin=" 20" FontSize=" 20" Command="{Binding CreateBtn}" x:Name="create" Content="Create Process" />
+                <Button Height=" 50" Width=" 150" Background="MediumPurple"  HorizontalAlignment="Left" Foreground="White"  VerticalAlignment="Bottom" Margin=" 20" FontSize=" 20"  Command="{Binding EndBtn}" Content="End Process"/>
+
             </StackPanel>
         </Grid>
     </Grid>

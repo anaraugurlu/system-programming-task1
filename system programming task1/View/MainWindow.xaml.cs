@@ -35,6 +35,9 @@ namespace system_programming_task1
 
         }
 
+        private void add_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
     }
 }

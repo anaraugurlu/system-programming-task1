@@ -13,7 +13,14 @@ namespace system_programming_task1.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
-   
+       private ObservableCollection<Process> allProcesses { get; set; }
+        public ObservableCollection<Process> AllProcesses
+        {
+            get { return allProcesses; }
+            set { allProcesses = value;OnPropertyChanged(); }
+        }
+
+
         public MainWindow MainWindow { get; set; }
         ObservableCollection<Process> Processes { get; set; }
         private Process sProcess;
@@ -27,12 +34,20 @@ namespace system_programming_task1.ViewModels
 
         public RelayCommand CreateBtn { get; set; }
         public RelayCommand EndBtn { get; set; }
+        public RelayCommand AddBtn { get; set; }
 
         public MainViewModel(MainWindow window)
         {
 
+            Processes = new ObservableCollection<Process>(Process.GetProcesses());
             MainWindow = window;
-             
+        
+            AllProcesses = new ObservableCollection<Process>(Process.GetProcesses());
+            
+            AddBtn = new RelayCommand((sender) => { 
+                MainWindow.addlistbox .Items.Add(MainWindow.processname  .Text);
+                MessageBox.Show("process was added" );
+            });
             CreateBtn = new RelayCommand((sender => {
                 try
                 {
@@ -54,17 +69,29 @@ namespace system_programming_task1.ViewModels
 
             EndBtn = new RelayCommand((sender =>
             {
-                //try
-                //{
-             
-                SProcess.Kill();
+                try
+                {
+
+                    try
+                    {
+                        if (SProcess != null)
+                        {
+                            SProcess.Kill();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                      
+                    }
+
+                }
 
 
-                //}
-                //catch (Exception )
-                //{
-                //    MessageBox.Show("error");
-                //}
+
+                catch (Exception)
+                {
+                    
+                }
 
             }));
         }
